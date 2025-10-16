@@ -1,0 +1,31 @@
+@import 'pretendard/dist/web/static/pretendard.css';
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #ffffff;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+:root {
+  --deep-orange: #F4511E;
+  --golden-yellow: #FFCA28;
+  --sunset-orange: #FF6E40;
+  --bg-light: #FFF8F3;
+}
