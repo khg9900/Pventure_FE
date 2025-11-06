@@ -4,6 +4,7 @@ import { useTripForm } from "../hooks/useTripForm";
 import { createTrip } from "../api/trip.api";
 import TripDatePickerModal from "./TripDatePickerModal";
 import FolderSelect from "@/features/folder/components/FolderSelect";
+import MemberInviteForm from "@/features/member/components/MemberInviteForm";
 import SectionField from "./SectionField";
 import { useNavigate } from "react-router-dom";
 import { useFolders } from "@/features/folder/hooks/useFolders";
@@ -184,6 +185,8 @@ export default function TripForm({ coverFile }: TripFormProps) {
           </div>
         )}
       </SectionField>
+
+      <MemberInviteForm />
 
       <SectionField icon={<Folder />} label="폴더 선택">
         <FolderSelect
