@@ -4,53 +4,44 @@ export interface PageUIConfig {
   floatingIcon?: "plus";
   floatingAction?: string;
   sidebar?: boolean;
-  bgColor?: string;
 }
 
 export const PAGE_UI_CONFIG: Record<string, PageUIConfig> = {
   "/": {
     header: false,
     floatingButton: false,
-    bgColor: "#fefaf7ff",
   },
   "/login": {
     header: false,
     floatingButton: false,
-    bgColor: "#FFFFFF",
   },
   "/calendar": {
     header: true,
     floatingButton: true,
     floatingIcon: "plus",
     floatingAction: "/trips/new",
-    bgColor: "#FFFFFF",
   },
   "/folders": {
     header: true,
     floatingButton: false,
-    bgColor: "#FFFFFF",
   },
   "/folders/:id": {
     header: true,
     floatingButton: true,
     floatingIcon: "plus",
     floatingAction: "/trips/new",
-    bgColor: "#FFFFFF",
   },
     "/trips/new": {
     header: false,
     floatingButton: false,
-    bgColor: "#FFFFFF",
   },
     "/trips/:tripId": {
     header: false,
     floatingButton: false,
-    bgColor: "#FFFFFF",
   },
   "/trips/:tripId/edit": {
     header: false,
     floatingButton: false,
-    bgColor: "#FFFFFF",
   },
 };
 

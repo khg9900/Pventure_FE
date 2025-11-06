@@ -32,20 +32,20 @@ export default function AppLayout() {
   }, [pathname]);
 
   return (
-    <div
-      className="app-shell layout"
-      style={{
-        backgroundColor: config.bgColor ?? colors.background,
-        transition: "background-color 0.4s ease",
-      }}
-    >
+    <div className="app-shell layout relative">
       {config.sidebar !== false && (
         <Sidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       )}
 
       {config.header && <Header onMenuClick={() => setIsMenuOpen(true)} />}
 
-      <main className="app-main">
+      <main
+        className="app-main transition-colors duration-500"
+        style={{
+          backgroundColor:
+            pathname === "/" ? "var(--color-landing-bg)" : "var(--color-bg)",
+        }}
+      >
         <Outlet />
       </main>
 
@@ -53,3 +53,4 @@ export default function AppLayout() {
     </div>
   );
 }
+
