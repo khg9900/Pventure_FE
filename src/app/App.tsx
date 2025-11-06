@@ -7,7 +7,7 @@ import FolderDetailPage from "@/pages/FolderDetailPage";
 // import CalendarPage from "@/pages/CalendarPage";
 // import SchedulePage from "@/pages/SchedulePage";
 // import ScheduleEditPage from "@/pages/ScheduleEditPage";
-// import CreateTripPage from "@/pages/CreateTripPage";
+import CreateTripPage from "@/pages/CreateTripPage";
 
 export default function App() {
   return (
@@ -19,7 +19,7 @@ export default function App() {
           {/* <Route path="/calendar" element={<CalendarPage />} /> */}
           <Route path="/folders" element={<FolderListPage />} />
           <Route path="/folders/:id" element={<FolderDetailPage />} />
-          {/* <Route path="/trips/new" element={<CreateTripPage />} /> */}
+          <Route path="/trips/new" element={<CreateTripPage />} />
           {/* <Route path="/trips/:tripId" element={<SchedulePage />} /> */}
           {/* <Route path="/trips/:tripId/edit" element={<ScheduleEditPage />} /> */}
         </Route>
