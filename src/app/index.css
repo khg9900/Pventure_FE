@@ -1,0 +1,123 @@
+@import 'pretendard/dist/web/static/pretendard.css';
+
+:root {
+  --color-primary: #ff6e40;
+  --color-secondary: #ffca28;
+  --color-accent: #ff7c33;
+
+  --color-bg: #ffffff;
+  --color-surface: #fefaf7;
+  --color-landing-bg: #fff7f2;
+
+  --color-text-main: #2b2b2b;
+  --color-text-sub: #777777;
+  --color-text-muted: #aaaaaa;
+
+  --status-planned: #f4511e;
+  --status-ongoing: #ffca28;
+  --status-completed: #9e9e9e;
+
+  --color-primary-light: rgba(255, 110, 64, 0.15);
+  --color-primary-border: rgba(255, 110, 64, 0.8);
+  --color-accent-light: rgba(255, 124, 51, 0.12);
+  --color-accent-border: rgba(255, 124, 51, 0.3);
+  --color-secondary-light: rgba(255, 202, 40, 0.12);
+  --color-secondary-border: rgba(255, 202, 40, 0.25);
+  --color-border: rgba(0, 0, 0, 0.05);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: 'Pretendard', sans-serif;
+}
+
+.app-shell.layout {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  background-color: var(--color-bg);
+}
+
+.card {
+  padding: 2em;
+  background-color: var(--color-surface);
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter, transform;
+  transition: filter 300ms ease, transform 300ms ease;
+  filter: drop-shadow(0 0 1em var(--color-primary-border));
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em var(--color-primary));
+  transform: scale(1.05);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em var(--color-accent));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: var(--color-text-sub);
+  transition: color 0.3s ease;
+}
+.read-the-docs:hover {
+  color: var(--color-primary);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
