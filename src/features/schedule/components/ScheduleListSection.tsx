@@ -1,7 +1,7 @@
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
-import ScheduleItemCard from "./ScheduleItemCard";
+import ScheduleItemCard from "@/features/schedule/components/ScheduleItemCard/ScheduleItemCard";
 import { TIME_SLOTS, TIME_SLOT_ICONS } from "../constants/index";
 import type { ScheduleResponseDto, TimeSlot } from "../types/schedule";
 import type { PlaceResponseDto } from "@/features/place/types/place";
