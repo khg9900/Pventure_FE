@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
-import type { ScheduleItem } from "../types/schedule";
+import type { ScheduleResponseDto } from "../types/schedule";
 import { fetchAllSchedules } from "../api/schedule.api";
 
 export function useSchedule(tripId: number) {
-  const [schedules, setSchedules] = useState<ScheduleItem[]>([]);
+  const [schedules, setSchedules] = useState<ScheduleResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,7 +22,7 @@ export function useSchedule(tripId: number) {
   }, [tripId]);
 
   const grouped = useMemo(() => {
-    return schedules.reduce<Record<number, ScheduleItem[]>>((acc, s) => {
+    return schedules.reduce<Record<number, ScheduleResponseDto[]>>((acc, s) => {
       (acc[s.day] ??= []).push(s);
       return acc;
     }, {});

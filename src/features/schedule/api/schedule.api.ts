@@ -1,9 +1,9 @@
-import type { ScheduleItem } from "../types/schedule";
+import type { ScheduleResponseDto } from "../types/schedule";
 import { sampleSchedules } from "../mock/schedule.mock";
 
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
 
-export async function fetchAllSchedules(tripId: number): Promise<ScheduleItem[]> {
+export async function fetchAllSchedules(tripId: number): Promise<ScheduleResponseDto[]> {
   console.log(`📦 [${USE_MOCK ? "Mock" : "API"}] fetchAllSchedules(${tripId}) 호출됨`);
   await new Promise((r) => setTimeout(r, 300));
 
@@ -19,7 +19,7 @@ export async function fetchAllSchedules(tripId: number): Promise<ScheduleItem[]>
   return []; // 기본값 (실제 연결 전)
 }
 
-export async function fetchSchedulesByDay(tripId: number, day: number): Promise<ScheduleItem[]> {
+export async function fetchSchedulesByDay(tripId: number, day: number): Promise<ScheduleResponseDto[]> {
   console.log(`📅 [${USE_MOCK ? "Mock" : "API"}] fetchSchedulesByDay(${tripId}, ${day}) 호출됨`);
   await new Promise((r) => setTimeout(r, 300));
 
