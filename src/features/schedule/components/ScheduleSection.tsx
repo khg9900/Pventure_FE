@@ -4,8 +4,7 @@ import ScheduleDayTabs from "./ScheduleDayTabs";
 import ScheduleListSection from "./ScheduleListSection";
 import MemberListSection from "@/features/member/components/MemberListSection";
 import { Pin } from "lucide-react";
-import ScheduleItemModal from "./ScheduleItemModal";
-
+import ScheduleItemModal from "./ScheduleItemModal/ScheduleItemModal";
 import type { ScheduleResponseDto } from "../types/schedule";
 import type { Member } from "@/features/member/types/member.type";
 import type { PlaceResponseDto } from "@/features/place/types/place";
@@ -74,7 +73,8 @@ export default function ScheduleSection({
   /** 새 일정 추가 */
   const handleAdd = (slot: string) => {
     setSelectedSlot(slot as ScheduleResponseDto["timeSlot"]);
-    setEditingItem(null);
+    setEditingItem(null);  
+    setPlace(null);
     setModalOpen(true);
   };
 
@@ -83,6 +83,7 @@ export default function ScheduleSection({
     if (!isEditMode) return;
     setSelectedSlot(item.timeSlot);
     setEditingItem(item);
+    setPlace(getPlaceForSchedule(item.id));
     setModalOpen(true);
   };
 
