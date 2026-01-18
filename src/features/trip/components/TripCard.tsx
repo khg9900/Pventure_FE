@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   MoreVertical,
   UsersRound,
@@ -19,6 +20,7 @@ interface TripCardProps {
 }
 
 export default function TripCard({ trip, onClick }: TripCardProps) {
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,8 +82,16 @@ export default function TripCard({ trip, onClick }: TripCardProps) {
               ref={menuRef}
               role="menu"
             >
-              <MenuItem icon={<Eye />} label="상세 보기" />
-              <MenuItem icon={<Pencil />} label="여행 수정" />
+              <MenuItem 
+                icon={<Eye />} 
+                label="상세 보기" 
+                onClick={() => navigate(`/trips/${trip.id}/schedule`)}
+              />
+              <MenuItem 
+                icon={<Pencil />} 
+                label="여행 수정" 
+                onClick={() => navigate(`/trips/${trip.id}/edit`)}
+              />
               <MenuItem icon={<Trash2 />} label="여행 삭제" />
               <hr className="my-1 border-[var(--color-border)]" />
               <MenuItem icon={<Share2 />} label="공유하기" />
@@ -99,8 +109,8 @@ export default function TripCard({ trip, onClick }: TripCardProps) {
         <div className="flex items-center text-[var(--color-text-sub)] text-sm">
           <Calendar className="w-4 h-4 mr-2 text-[var(--color-primary)]" />
           <span>
-            {trip.startDate.toLocaleDateString("ko-KR")} ~{" "}
-            {trip.endDate.toLocaleDateString("ko-KR")}
+            {trip.startDate?.toLocaleDateString("ko-KR") ?? "날짜 미정"} ~{" "}
+            {trip.endDate?.toLocaleDateString("ko-KR") ?? "날짜 미정"}
           </span>
         </div>
 
@@ -121,13 +131,15 @@ export default function TripCard({ trip, onClick }: TripCardProps) {
 function MenuItem({
   icon,
   label,
+  onClick,
 }: {
   icon: React.ReactNode;
   label: string;
+  onClick?: () => void;
 }) {
   return (
     <button
-      onClick={() => alert(`${label} 클릭`)}
+      onClick={onClick || (() => alert(`${label} 클릭`))}
       className="w-full flex items-center px-3 py-2 text-sm hover:bg-[var(--color-surface)] 
                  text-[var(--color-text-main)] transition-colors"
       role="menuitem"

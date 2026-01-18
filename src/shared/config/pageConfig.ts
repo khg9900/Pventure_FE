@@ -31,15 +31,19 @@ export const PAGE_UI_CONFIG: Record<string, PageUIConfig> = {
     floatingIcon: "plus",
     floatingAction: "/trips/new",
   },
-    "/trips/new": {
-    header: false,
-    floatingButton: false,
-  },
-    "/trips/:tripId": {
+  "/trips/new": {
     header: false,
     floatingButton: false,
   },
   "/trips/:tripId/edit": {
+    header: false,
+    floatingButton: false,
+  },
+  "/trips/:tripId/schedule": {
+    header: false,
+    floatingButton: false,
+  },
+  "/trips/:tripId/schedule/edit": {
     header: false,
     floatingButton: false,
   },
@@ -52,6 +56,7 @@ export const PAGE_TITLE_CONFIG: Record<string, string> = {
   "/folders": "여행 폴더",
   "/folders/:id": "폴더 상세",
   "/trips/new": "여행 생성",
-  "/trips/:tripId": "일정 상세",
-  "/trips/:tripId/edit": "일정 수정",
+  "/trips/:tripId/edit": "여행 정보 수정",
+  "/trips/:tripId/schedule": "일정 상세",
+  "/trips/:tripId/schedule/edit": "일정 수정",
 };

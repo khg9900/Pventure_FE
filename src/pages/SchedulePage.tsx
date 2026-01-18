@@ -14,14 +14,18 @@ export default function SchedulePage() {
   const trip = MOCK_TRIPS.find((t) => t.id === Number(tripId))!;
   const [selectedDay, setSelectedDay] = useState(1);
   const { grouped, loading, error } = useSchedule(Number(tripId));
-  const days = getTripDays(trip.startDate, trip.endDate);
+  const days = trip.startDate && trip.endDate 
+    ? getTripDays(trip.startDate, trip.endDate)
+    : [];
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-white pb-28">
       <ScheduleHeader />
       <TripHeader
         title={trip.title}
-        period={`${days[0].date} ~ ${days[days.length - 1].date}`}
+        period={days.length > 0 
+          ? `${days[0].date} ~ ${days[days.length - 1].date}`
+          : "날짜 미정"}
         status={trip.status}
         thumbnail={trip.thumbnail}
       />

@@ -15,11 +15,13 @@ export default function ScheduleEditPage() {
   const trip = MOCK_TRIPS.find((t) => t.id === Number(tripId))!;
   const [selectedDay, setSelectedDay] = useState(1);
   const { grouped, setSchedules, loading, error } = useSchedule(Number(tripId));
-  const days = getTripDays(trip.startDate, trip.endDate);
+  const days = trip.startDate && trip.endDate 
+    ? getTripDays(trip.startDate, trip.endDate)
+    : [];
 
   const handleSave = () => {
     alert("✅ 여행 일정이 저장되었습니다!");
-    navigate(`/trips/${tripId}`);
+    navigate(`/trips/${tripId}/schedule`);
   };
 
   return (
@@ -27,7 +29,9 @@ export default function ScheduleEditPage() {
       <ScheduleHeader />
       <TripHeader
         title={trip.title}
-        period={`${days[0].date} ~ ${days[days.length - 1].date}`}
+        period={days.length > 0 
+          ? `${days[0].date} ~ ${days[days.length - 1].date}`
+          : "날짜 미정"}
         status={trip.status}
         thumbnail={trip.thumbnail}
       />

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ImagePlus } from "lucide-react";
 import defaultCover from "@/assets/sample/trip_thumbnail.jpg";
 
@@ -13,6 +13,12 @@ export default function TripCoverUploader({
 }: TripCoverUploaderProps) {
   const [preview, setPreview] = useState(defaultImage);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (defaultImage) {
+      setPreview(defaultImage);
+    }
+  }, [defaultImage]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

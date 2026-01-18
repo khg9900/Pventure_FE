@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, MoreVertical } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function ScheduleHeader() {
   const navigate = useNavigate();
+  const { tripId } = useParams<{ tripId: string }>();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -43,10 +44,10 @@ export default function ScheduleHeader() {
         {menuOpen && (
           <div className="absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-md text-gray-700 text-sm z-50">
             <button
-              onClick={() => navigate("/trips/edit")}
+              onClick={() => tripId && navigate(`/trips/${tripId}/schedule/edit`)}
               className="block w-full text-left px-4 py-2 hover:bg-gray-50"
             >
-              여행 수정
+              일정 수정
             </button>
 
             <button
