@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import TripCoverUploader from "@/features/trip/components/TripCoverUploader";
-import TripForm from "@/features/trip/components/TripForm";
+import TripForm from "@/features/trip/components/TripForm/TripForm";
 import { useState } from "react";
 
 export default function CreateTripPage() {

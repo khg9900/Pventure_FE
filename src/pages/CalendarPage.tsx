@@ -12,7 +12,7 @@ export default function CalendarPage() {
 
   const handleTripSelect = (trip: Trip | null) => {
     if (!trip) return;
-    navigate(`/trips/${trip.id}`);
+    navigate(`/trips/${trip.id}/schedule`);
   };
 
   const currentMonth = currentDate.getMonth();
@@ -21,6 +21,7 @@ export default function CalendarPage() {
   const filteredTrips = trips.filter((trip) => {
     const start = trip.startDate;
     const end = trip.endDate;
+    if (!start || !end) return false;
     return (
       (start.getFullYear() === currentYear &&
         start.getMonth() === currentMonth) ||

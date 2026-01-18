@@ -2,7 +2,7 @@ import type { MemberInvite, Member } from "../types/member.type";
 import { MOCK_MEMBERS } from "../mock/members.mock";
 
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+// const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 
 export const inviteMembers = async (
   tripId: number,

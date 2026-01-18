@@ -40,7 +40,7 @@ export default function FolderDetailPage() {
           title={`${folder?.name ?? "폴더"}의 여행`}
           trips={filteredTrips}
           emptyText="이 폴더에는 여행이 없습니다"
-          onItemClick={(trip) => navigate(`/trips/${trip.id}`)}
+          onItemClick={(trip) => navigate(`/trips/${trip.id}/schedule`)}
         />
       )}
     </div>

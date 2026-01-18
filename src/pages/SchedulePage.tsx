@@ -13,19 +13,22 @@ export default function SchedulePage() {
   const { tripId } = useParams();
   const trip = MOCK_TRIPS.find((t) => t.id === Number(tripId))!;
   const [selectedDay, setSelectedDay] = useState(1);
-  const days = getTripDays(trip.startDate, trip.endDate);
+  const { grouped, loading, error } = useSchedule(Number(tripId));
+  const days = trip.startDate && trip.endDate 
+    ? getTripDays(trip.startDate, trip.endDate)
+    : [];
 
   // 커스텀 훅을 사용하여 일정 및 장소 데이터 가져오기
   const { grouped, places, loading, error } = useScheduleWithPlaces(Number(tripId));
 
   return (
-    <div className="relative min-h-screen bg-white pb-10">
-      <ScheduleHeader 
-        tripId={Number(trip.id)}
-      />
+    <div className="relative min-h-screen bg-white pb-28">
+      <ScheduleHeader />
       <TripHeader
         title={trip.title}
-        period={`${days[0].date} ~ ${days[days.length - 1].date}`}
+        period={days.length > 0 
+          ? `${days[0].date} ~ ${days[days.length - 1].date}`
+          : "날짜 미정"}
         status={trip.status}
         thumbnail={trip.thumbnail}
       />
