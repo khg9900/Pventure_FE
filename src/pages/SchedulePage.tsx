@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSchedule } from "@/features/schedule/hooks/useSchedule";
 import { getTripDays } from "@/shared/utils/dateUtils";
 import { MOCK_TRIPS } from "@/features/trip/mock/trips.mock";
 import { MOCK_MEMBERS } from "@/features/member/mock/members.mock";
@@ -8,6 +7,7 @@ import TripHeader from "@/features/trip/components/TripHeader";
 import ScheduleHeader from "@/features/schedule/components/ScheduleHeader";
 import ScheduleSection from "@/features/schedule/components/ScheduleSection";
 import BottomNav from "@/features/schedule/components/BottomNav";
+import { useScheduleWithPlaces } from "@/features/place/hooks/useScheduleWithPlaces";
 
 export default function SchedulePage() {
   const { tripId } = useParams();
@@ -17,6 +17,9 @@ export default function SchedulePage() {
   const days = trip.startDate && trip.endDate 
     ? getTripDays(trip.startDate, trip.endDate)
     : [];
+
+  // 커스텀 훅을 사용하여 일정 및 장소 데이터 가져오기
+  const { grouped, places, loading, error } = useScheduleWithPlaces(Number(tripId));
 
   return (
     <div className="relative min-h-screen bg-white pb-28">
@@ -37,8 +40,11 @@ export default function SchedulePage() {
         grouped={grouped}
         loading={loading}
         error={error}
+        places={places}
       />
-      <BottomNav activeTab="plan" onChange={() => {}} />
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40 w-full px-6 py-3 bg-white">
+        <BottomNav activeTab="plan" onChange={() => {}} />
+      </div>
     </div>
   );
 }

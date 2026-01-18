@@ -7,16 +7,17 @@ export type TimeSlot =
   | "저녁식사"
   | "밤";
 
-export interface ScheduleItem {
-  id: number;
+export interface ScheduleBase {
+  isCompleted: boolean;
   day: number;
+  sequence: number;
+  date?: string;
   timeSlot: TimeSlot;
-  placeName: string;
-  address: string;
   memo?: string;
-  hash?: string;
-  link?: string;
-  links?: string[];
+}
+
+export interface ScheduleResponseDto extends ScheduleBase {
+    id: number;
 }
 
 export interface DayInfo {

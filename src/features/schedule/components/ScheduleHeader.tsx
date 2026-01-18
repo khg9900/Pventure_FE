@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, MoreVertical } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-export default function ScheduleHeader() {
+export default function ScheduleHeader({ tripId }: { tripId: number }) {
   const navigate = useNavigate();
   const { tripId } = useParams<{ tripId: string }>();
   const [menuOpen, setMenuOpen] = useState(false);
